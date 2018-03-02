@@ -1,6 +1,7 @@
 import requests
 from lxml import etree
 import datetime
+import time
 
 def get_link():
     url = "https://www.che168.com/shenzhen/benchi/#pvareaid=102179"
@@ -28,11 +29,14 @@ def get_image(img_urls):
         i = i+1
 
 if __name__ == "__main__":
+    t1 = time.time()
     one_car_links = get_link()
     all_image_links = []
     for one_car_link in one_car_links:
         all_image_links.extend(get_img_link(one_car_link))
-    get_image(all_image_links[:20])
+    get_image(all_image_links[:50])
+    t2 = time.time()
+    print("总工耗时间：%f"%(t2-t1))
 
 
 
